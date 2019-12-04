@@ -7,10 +7,10 @@ class Person:
 
 """Sample array of varied names,ages and sexes"""
 personlist = [] 
-personlist.append(Person("Carlana", 20, "true"))
-personlist.append(Person("Bobby", 18, "false"))
-personlist.append(Person("Sasha", 25, "false"))
-personlist.append(Person("Keithy", 18, "true"))
+personlist.append(Person("Carlana", 20, False))
+personlist.append(Person("Bobby", 18, True))
+personlist.append(Person("Sasha", 25, False))
+personlist.append(Person("Keithy", 18, True))
 
 """sample test cases commented out""" 
 # print(personlist[0].name)
@@ -24,18 +24,38 @@ personlist.append(Person("Keithy", 18, "true"))
 # for person in personlist:
     # if 18 == person.age:
         # print( "%s: \"%s\"" % (person.name, person.age))
+#print(type(personlist[0].sex))
 
 """getting age and name, changing age and name from an array of classes in cmd"""
 while True: 
 	p = input()
 	q =  p.split(" ",2)
 	existence = False
-	"""type 'end' to close program"""
-	if p == "end":
+	"""type 'bye' to close program"""
+	if p == "bye":
 		break
-		
-	""" changename 'name you're looking to change' 'new name' """
-	elif q[0] == "changename":
+	elif q[0] == "count":
+		print(len(personlist))
+	elif q[0] == "age":
+		for person in personlist:
+			if q[1] in person.name:
+				print( "%s is %s years old" % (person.name, person.age))
+				existence = True
+		if existence == False:
+			print("there aint nobody named " + q[1])
+		existence = False
+	elif q[0] == "sex": 
+		for person in personlist:
+			if q[1] in person.name:
+				if person.sex == True:
+					print( "%s is Male" % (person.name))
+				elif person.sex == False:
+					print( "%s is Female" % (person.name))
+				existence = True
+		if existence == False:
+			print("there aint nobody named " + q[1])
+		existence = False
+	elif q[0] == "edit-age":
 		for person in personlist:
 			if q[1] in person.name:
 				print( "%s changed to %s" % (person.name, q[2]))
@@ -44,9 +64,7 @@ while True:
 		if existence == False:
 			print("there aint nobody named " + q[1])
 		existence = False
-		
-	""" changenage 'name you're looking to change age' 'new age' """
-	elif q[0] == "changeage":
+	elif q[0] == "edit-age":
 		for person in personlist:
 			if q[1] in person.name:
 				print( "%s\'s age is changed from %s to %s" % (person.name, person.age, q[2]))
@@ -55,18 +73,18 @@ while True:
 		if existence == False:
 			print("there aint nobody aged " + q[1])
 		existence = False
-		
-	""" checkage 'age you're looking for' """	
-	elif q[0] == "checkage":
+	elif q[0] == "edit-sex":
 		for person in personlist:
-			if int(q[1]) == person.age:
-				print( "%s is %s years old" % (person.name, person.age))
+			if q[1] in person.name:
+				print( "%s\'s sex is changed" % (person.name))
+				if (q[2]) == "False":
+					person.sex = False
+				elif q[2] == "True":
+					person.sex = True
 				existence = True
 		if existence == False:
-			print("there aint nobody aged " + q[1])
+			print("there aint nobody named " + q[1])
 		existence = False
-		
-	""" type 'enumdeets' to see everyone's names and corresponding ages"""
 	elif q[0] == "enumdeets":			
 		for person in personlist:		
 			print("%s - %s" % (person.name, person.age))
