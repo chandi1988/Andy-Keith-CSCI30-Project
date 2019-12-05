@@ -1,37 +1,24 @@
 """person class and searching example"""
+personArray = []
 class Person:
 	def __init__(self, name, age, sex):
 		self.name = name
 		self.age = age
 		self.sex = sex
 
-"""Sample array of varied names,ages and sexes"""
-personlist = []
-personlist.append(Person("Carlana", 20, False))
-personlist.append(Person("Bobby", 18, True))
-personlist.append(Person("Sasha", 25, False))
-personlist.append(Person("Keithy", 18, True))
+def addtoPersonArray(name, age, sex):
+	personArray.append(Person(name, age, sex))
 
-"""sample test cases commented out"""
-# print(personlist[0].name)
+def returnPersonArray():
+	return PersonArray
 
-# look = 'false'
-# for person in personlist:
-    # if look in person.sex:
-        # # title() capitalizes the job's first letter
-        # print( "%s %s: \"%s\"" % (person.sex.title(), person.name, person.age))
-
-# for person in personlist:
-    # if 18 == person.age:
-        # print( "%s: \"%s\"" % (person.name, person.age))
-#print(type(personlist[0].sex))
 
 """getting age and name, changing age and name from an array of classes in cmd"""
+"""
 while True:
 	p = input()
 	q =  p.split(" ",2)
 	existence = False
-	"""type 'bye' to close program"""
 	if p == "bye":
 		break
 	elif q[0] == "count":
@@ -88,3 +75,4 @@ while True:
 	elif q[0] == "enumdeets":
 		for person in personlist:
 			print("%s - %s" % (person.name, person.age))
+"""
