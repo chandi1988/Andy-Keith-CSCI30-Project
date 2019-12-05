@@ -2,9 +2,9 @@ from personclass import *
 
 familyName = input().split()[1]
 
+"""establish number of people in famtree"""
 numPerson = input().split()[1]
 count = int(numPerson)
-
 while count > 0:
     name = input().split()[1]
     age = int(input().split()[1])
@@ -12,6 +12,7 @@ while count > 0:
     addtoPersonArray(name, age, sex)
     count -= 1
 
+"""make sure correct number of links"""
 linkcnt = 0
 while True:
     link = input().split()[1]
@@ -21,4 +22,5 @@ while True:
     else:
         linkcnt = linkCount
         break
-while linkcnt > 0:
+
+"""establish relationship (parent to child)"""
