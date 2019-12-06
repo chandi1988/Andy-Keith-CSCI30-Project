@@ -210,4 +210,4 @@ if fam.split()[0] == "load":
     FamTreeLoad(fam.split()[1])
     makeTree()
 #print(leastCommonAncestor("Patricia", "Robert").name)
-print(relationship("Joyce", "Alma"))
+print(relationship("Patricia", "Richard"))
