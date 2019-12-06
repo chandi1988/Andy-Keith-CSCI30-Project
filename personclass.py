@@ -5,12 +5,19 @@ class Person:
 		self.name = name
 		self.age = age
 		self.sex = sex
+		self.left = None
+		self.right = None
+		self.parent = None
+	def setLeft(self, child):
+		self.left = child
 
 def addtoPersonArray(name, age, sex):
 	personArray.append(Person(name, age, sex))
 
-def returnPersonArray():
-	return PersonArray
+def returnPerson():
+	return personArray
+
+
 
 
 """getting age and name, changing age and name from an array of classes in cmd"""

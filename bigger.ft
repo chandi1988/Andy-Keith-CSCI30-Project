@@ -1,0 +1,30 @@
+family Bigger
+count 7
+name A
+age 56
+sex true
+name B
+age 15
+sex false
+name C
+age 24
+sex true
+name D
+age 2
+sex false
+name E
+age 56
+sex true
+name F
+age 15
+sex false
+name G
+age 24
+sex true
+links 6
+child A B
+child A C
+child B D
+child B E
+child C F
+child C G
