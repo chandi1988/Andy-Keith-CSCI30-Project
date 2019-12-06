@@ -28,16 +28,10 @@ def FamTreeLoad(familyName):
 def makeTree():
     habalnk = len(getLinkIn())
     while habalnk > 0:
-        #print("k")
         for i in returnPerson():
-            #print(i.name)
-            #print("lol")
             bilang = 0
             while bilang < len(getLinkIn()):
-                #print("g")
-                #print(i.name, links[bilang].split()[1])
                 if i.name == links[bilang].split()[1]:
-                    #print("etits")
                     if i.left == None:
                         leftchild = str(links[bilang].split()[2])
                         i.left = findPerson(leftchild)
@@ -129,8 +123,89 @@ def leastCommonAncestor(n1, n2):
                         g1 = p1.gen
                         g2 = p2.gen
 
+def listAncestors(name):
+    list = []
+    p1 = findPerson(name)
+    while p1.gen > 1:
+        p1 = p1.parent
+        list.append(p1.name)
+    list.sort()
+    for i in list:
+        print(i)
+
+def listDescendants(name, traversal):
+    p = findPerson(name)
+    if p:
+        traversal += (str(p.name) + "-")
+        traversal = listDescendants(p.left, traversal)
+        traversal = listDescendants(p.right, traversal)
+    return traversal
+
+
+def relationship(ppp1,ppp2):
+    Ordinal = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"]
+    Times = ["once", "twice", "thrice", "four times", "five times", "six times", "seven times", "eight times", "nine times", "ten times"]
+    Great = ["", "great-", "great-great-", "great-great-great-","great-great-great-great-", "great-great-great-great-great-", "great-great-great-great-great-great-", "great-great-great-great-great-great-great-", "great-great-great-great-great-great-great-great-", "great-great-great-great-great-great-great-great-great-"]
+    p1 = findPerson(ppp1)
+    p2 = findPerson(ppp2)
+    l = leastCommonAncestor(p1,p2)
+    d1 = (p1.gen - l.gen)
+    d2 = (p2.gen - l.gen)
+
+    nearest = min(d1, d2)
+    furthest = max(d1, d2)
+
+    if nearest >= 2:
+        degree = (nearest - 1)
+        removal = abs(d1 -d2)
+        if removal == 0:
+            return str(Ordinal[degree] + " cousin")
+        else:
+            return str(Ordinal[degree] + " cousin, " + Times[removal] + " removed")
+    elif nearest == 1:
+        if furthest == 1:
+            if p2.sex == True:
+                return "brother"
+            else:
+                return "sister"
+        else if furthest == 2:
+            return Term("nibling", d1, d2, p2.sex)
+        else:
+            return str(Great[furthest] + "grand" + Term("nibling", d1, d2, p2.sex))
+    elif nearest = 0:
+        if furthest == 1:
+            return Term("child", d1, d2, p2.sex)
+        else
+            return str(Great[furthest] + "grand" + Term("child", d1, d2, p2.sex))
+
+
+def Term(kind, d1, d2, sex):
+    if d1 < d2:
+        if kind == "child":
+            if sex == True
+                return "son"
+            else:
+                return "daughter"
+        else:
+            if sex == True:
+                return "nephew"
+            else:
+                return "niece"
+    elif d1 > d2:
+        if kind == "child":
+            if sex == True
+                return "father"
+            else:
+                return "mother"
+        else:
+            if sex == True:
+                return "uncle"
+            else:
+                return "aunt"
+
+
 fam = input()
 if fam.split()[0] == "load":
     FamTreeLoad(fam.split()[1])
     makeTree()
-print(leastCommonAncestor("Patricia", "Juan").name)
+print(listDescendants("Patricia", ""))
