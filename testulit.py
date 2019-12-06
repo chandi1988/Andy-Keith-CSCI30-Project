@@ -40,17 +40,97 @@ def makeTree():
                     #print("etits")
                     if i.left == None:
                         leftchild = str(links[bilang].split()[2])
-                        #print(findPerson(leftchild))
                         i.left = findPerson(leftchild)
-                        #print(i.left)
+                        findPerson(leftchild).parent = i
+                        findPerson(leftchild).gen = i.gen + 1
                     elif i.right == None:
-                        i.right = findPerson(links[bilang].split()[2])
-                        print("nen")
+                        rightchild = str(links[bilang].split()[2])
+                        i.right = findPerson(rightchild)
+                        findPerson(rightchild).parent = i
+                        findPerson(rightchild).gen = i.gen + 1
+
                 bilang += 1
         habalnk -= 1
+
+def leastCommonAncestor(n1, n2):
+    g1 = findPerson(n1).gen
+    g2 = findPerson(n2).gen
+    p1 = findPerson(n1)
+    p2 = findPerson(n2)
+    while True:
+        if p1.parent == None:
+            return p1
+            break
+        elif p2.parent == None:
+            return p2
+            break
+        elif g1 == g2:
+            if p1.parent == p2.parent:
+                return p1.parent
+                break
+            else:
+                p1 = p1.parent
+                p2 = p2.parent
+                g1 = p1.gen
+                g2 = p2.gen
+                while True:
+                    if p1.parent == p2.parent:
+                        return p1.parent
+                        break
+                    else:
+                        p1 = p1.parent
+                        p2 = p2.parent
+                        g1 = p1.gen
+                        g2 = p2.gen
+        elif g1 > g2:
+            while g1 != g2:
+                p1 = p1.parent
+                g1 = p1.gen
+            if p1 == p2:
+                return p2
+            elif p1.parent == p2.parent:
+                return p1.parent
+                break
+            else:
+                p1 = p1.parent
+                p2 = p2.parent
+                g1 = p1.gen
+                g2 = p2.gen
+                while True:
+                    if p1.parent == p2.parent:
+                        return p1.parent
+                        break
+                    else:
+                        p1 = p1.parent
+                        p2 = p2.parent
+                        g1 = p1.gen
+                        g2 = p2.gen
+        elif g2 > g1:
+            while g2 != g1:
+                p2 = p2.parent
+                g2 = p2.gen
+            if p2 == p1:
+                return p1
+            elif p1.parent == p2.parent:
+                return p1.parent
+                break
+            else:
+                p1 = p1.parent
+                p2 = p2.parent
+                g1 = p1.gen
+                g2 = p2.gen
+                while True:
+                    if p1.parent == p2.parent:
+                        return p1.parent
+                        break
+                    else:
+                        p1 = p1.parent
+                        p2 = p2.parent
+                        g1 = p1.gen
+                        g2 = p2.gen
 
 fam = input()
 if fam.split()[0] == "load":
     FamTreeLoad(fam.split()[1])
     makeTree()
-print(returnPerson()[2].left.name)
+print(leastCommonAncestor("Patricia", "Juan").name)

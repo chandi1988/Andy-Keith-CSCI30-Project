@@ -8,6 +8,7 @@ class Person:
 		self.left = None
 		self.right = None
 		self.parent = None
+		self.gen = 1
 	def setLeft(self, child):
 		self.left = child
 
