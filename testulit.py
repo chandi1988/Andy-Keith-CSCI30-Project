@@ -145,12 +145,13 @@ def listDescendants(name, traversal):
 def relationship(ppp1,ppp2):
     Ordinal = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"]
     Times = ["once", "twice", "thrice", "four times", "five times", "six times", "seven times", "eight times", "nine times", "ten times"]
-    Great = ["", "great-", "great-great-", "great-great-great-","great-great-great-great-", "great-great-great-great-great-", "great-great-great-great-great-great-", "great-great-great-great-great-great-great-", "great-great-great-great-great-great-great-great-", "great-great-great-great-great-great-great-great-great-"]
+    Great = ["", "", "", "great-", "great-great-", "great-great-great-","great-great-great-great-", "great-great-great-great-great-", "great-great-great-great-great-great-", "great-great-great-great-great-great-great-", "great-great-great-great-great-great-great-great-", "great-great-great-great-great-great-great-great-great-"]
     p1 = findPerson(ppp1)
     p2 = findPerson(ppp2)
-    l = leastCommonAncestor(p1,p2)
-    d1 = (p1.gen - l.gen)
-    d2 = (p2.gen - l.gen)
+    l = leastCommonAncestor(ppp1,ppp2)
+    l1 = l.gen
+    d1 = (p1.gen - l1)
+    d2 = (p2.gen - l1)
 
     nearest = min(d1, d2)
     furthest = max(d1, d2)
@@ -168,21 +169,21 @@ def relationship(ppp1,ppp2):
                 return "brother"
             else:
                 return "sister"
-        else if furthest == 2:
+        elif furthest == 2:
             return Term("nibling", d1, d2, p2.sex)
         else:
             return str(Great[furthest] + "grand" + Term("nibling", d1, d2, p2.sex))
-    elif nearest = 0:
+    elif nearest == 0:
         if furthest == 1:
             return Term("child", d1, d2, p2.sex)
-        else
+        else:
             return str(Great[furthest] + "grand" + Term("child", d1, d2, p2.sex))
 
 
 def Term(kind, d1, d2, sex):
     if d1 < d2:
         if kind == "child":
-            if sex == True
+            if sex == True:
                 return "son"
             else:
                 return "daughter"
@@ -193,7 +194,7 @@ def Term(kind, d1, d2, sex):
                 return "niece"
     elif d1 > d2:
         if kind == "child":
-            if sex == True
+            if sex == True:
                 return "father"
             else:
                 return "mother"
@@ -208,4 +209,5 @@ fam = input()
 if fam.split()[0] == "load":
     FamTreeLoad(fam.split()[1])
     makeTree()
-print(listDescendants("Patricia", ""))
+#print(leastCommonAncestor("Patricia", "Robert").name)
+print(relationship("Joyce", "Alma"))
