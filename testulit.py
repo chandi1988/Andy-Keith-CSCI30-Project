@@ -133,13 +133,40 @@ def listAncestors(name):
     for i in list:
         print(i)
 
-def listDescendants(name, traversal):
-    p = findPerson(name)
+fDescent = []
+def listDescendants(name):
+    descent = []
+    p = findPerson(name).left
     if p:
-        traversal += (str(p.name) + "-")
-        traversal = listDescendants(p.left, traversal)
-        traversal = listDescendants(p.right, traversal)
-    return traversal
+        descent.append(p.name)
+        try:
+            descent = descent + listDescendants(str(p.name))
+        except:
+            True
+        """try:
+            descent = descent + listDescendants(str(p.name))
+        except:
+            True"""
+    q = findPerson(name).right
+    if q:
+        descent.append(q.name)
+        try:
+            descent = descent + listDescendants(str(q.name))
+        except:
+            True
+        """try:
+            descent = descent + listDescendants(str(q.right.name))
+        except:
+            True"""
+    descent.sort()
+    global fDescent
+    fDescent = descent
+    return descent
+
+def returnDescendants(name):
+    listDescendants(name)
+    for i in fDescent:
+        print(i)
 
 
 def relationship(ppp1,ppp2):
@@ -210,4 +237,5 @@ if fam.split()[0] == "load":
     FamTreeLoad(fam.split()[1])
     makeTree()
 #print(leastCommonAncestor("Patricia", "Robert").name)
-print(relationship("Patricia", "Richard"))
+#print(relationship("Patricia", "Richard"))
+returnDescendants("Patricia")
