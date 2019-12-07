@@ -1,8 +1,13 @@
 """person class and searching example"""
+<<<<<<< HEAD
+=======
+personArray = []
+>>>>>>> 81fa32aaf83be4fc3150ba0ef9d2f9d80cc7f6f6
 class Person:
 	def __init__(self, name, age, sex):
 		self.name = name
 		self.age = age
+<<<<<<< HEAD
 		self.sex = sex 
 
 """Sample array of varied names,ages and sexes"""
@@ -32,6 +37,31 @@ while True:
 	q =  p.split(" ",2)
 	existence = False
 	"""type 'bye' to close program"""
+=======
+		self.sex = sex
+		self.left = None
+		self.right = None
+		self.parent = None
+		self.gen = 1
+	def setLeft(self, child):
+		self.left = child
+
+def addtoPersonArray(name, age, sex):
+	personArray.append(Person(name, age, sex))
+
+def returnPerson():
+	return personArray
+
+
+
+
+"""getting age and name, changing age and name from an array of classes in cmd"""
+"""
+while True:
+	p = input()
+	q =  p.split(" ",2)
+	existence = False
+>>>>>>> 81fa32aaf83be4fc3150ba0ef9d2f9d80cc7f6f6
 	if p == "bye":
 		break
 	elif q[0] == "count":
@@ -44,7 +74,11 @@ while True:
 		if existence == False:
 			print("there aint nobody named " + q[1])
 		existence = False
+<<<<<<< HEAD
 	elif q[0] == "sex": 
+=======
+	elif q[0] == "sex":
+>>>>>>> 81fa32aaf83be4fc3150ba0ef9d2f9d80cc7f6f6
 		for person in personlist:
 			if q[1] in person.name:
 				if person.sex == True:
@@ -85,6 +119,13 @@ while True:
 		if existence == False:
 			print("there aint nobody named " + q[1])
 		existence = False
+<<<<<<< HEAD
 	elif q[0] == "enumdeets":			
 		for person in personlist:		
 			print("%s - %s" % (person.name, person.age))
+=======
+	elif q[0] == "enumdeets":
+		for person in personlist:
+			print("%s - %s" % (person.name, person.age))
+"""
+>>>>>>> 81fa32aaf83be4fc3150ba0ef9d2f9d80cc7f6f6
