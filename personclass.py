@@ -1,43 +1,9 @@
 """person class and searching example"""
-<<<<<<< HEAD
-=======
 personArray = []
->>>>>>> 81fa32aaf83be4fc3150ba0ef9d2f9d80cc7f6f6
 class Person:
 	def __init__(self, name, age, sex):
 		self.name = name
 		self.age = age
-<<<<<<< HEAD
-		self.sex = sex 
-
-"""Sample array of varied names,ages and sexes"""
-personlist = [] 
-personlist.append(Person("Carlana", 20, False))
-personlist.append(Person("Bobby", 18, True))
-personlist.append(Person("Sasha", 25, False))
-personlist.append(Person("Keithy", 18, True))
-
-"""sample test cases commented out""" 
-# print(personlist[0].name)
-
-# look = 'false'
-# for person in personlist:
-    # if look in person.sex:
-        # # title() capitalizes the job's first letter
-        # print( "%s %s: \"%s\"" % (person.sex.title(), person.name, person.age))
-		
-# for person in personlist:
-    # if 18 == person.age:
-        # print( "%s: \"%s\"" % (person.name, person.age))
-#print(type(personlist[0].sex))
-
-"""getting age and name, changing age and name from an array of classes in cmd"""
-while True: 
-	p = input()
-	q =  p.split(" ",2)
-	existence = False
-	"""type 'bye' to close program"""
-=======
 		self.sex = sex
 		self.left = None
 		self.right = None
@@ -61,7 +27,6 @@ while True:
 	p = input()
 	q =  p.split(" ",2)
 	existence = False
->>>>>>> 81fa32aaf83be4fc3150ba0ef9d2f9d80cc7f6f6
 	if p == "bye":
 		break
 	elif q[0] == "count":
@@ -74,11 +39,7 @@ while True:
 		if existence == False:
 			print("there aint nobody named " + q[1])
 		existence = False
-<<<<<<< HEAD
-	elif q[0] == "sex": 
-=======
 	elif q[0] == "sex":
->>>>>>> 81fa32aaf83be4fc3150ba0ef9d2f9d80cc7f6f6
 		for person in personlist:
 			if q[1] in person.name:
 				if person.sex == True:
@@ -119,13 +80,7 @@ while True:
 		if existence == False:
 			print("there aint nobody named " + q[1])
 		existence = False
-<<<<<<< HEAD
-	elif q[0] == "enumdeets":			
-		for person in personlist:		
-			print("%s - %s" % (person.name, person.age))
-=======
 	elif q[0] == "enumdeets":
 		for person in personlist:
 			print("%s - %s" % (person.name, person.age))
 """
->>>>>>> 81fa32aaf83be4fc3150ba0ef9d2f9d80cc7f6f6
