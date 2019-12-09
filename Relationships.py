@@ -1,18 +1,11 @@
-from personclass import *
+from Person import *
 
 familyName = ""
 countPerson = 0
 countLink = 0
+countNames = 0
+""" links stores the Child _ _ and we translate it to real relations"""
 links = []
-
-class makeTree:
-    def __init__(self, root):
-        self.root = returnPerson()[0]
-
-def findPerson(name):
-    for i in returnPerson():
-        if name == i.name:
-            return i
 
 def famName(n):
     global familyName
@@ -36,4 +29,4 @@ def linkIn(n):
     global links
     links.append(n)
 def getLinkIn():
-    return links
+	return links
