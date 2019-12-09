@@ -22,12 +22,6 @@ while True:
 				pass
 			else:
 				print("Error: file does not exist")
-	elif ipt.split()[0].lower() == "save":
-		if len(returnPerson()) == 0:
-			print("Error: a family tree must be loaded in the current session first")
-		else:
-			saveFamTree(ipt.split()[1])
-			print("Family Tree has been updated!")
 	elif ipt.split()[0].lower() == "count":
 		if len(returnPerson()) == 0:
 			print("Error: a family tree must be loaded in the current session first")
@@ -96,6 +90,12 @@ while True:
 					print(relationship(ipt.split()[1], ipt.split()[2]))
 			except:
 				print("Error: input(s) are nonexistent, please fix and try again")
+	elif ipt.split()[0].lower() == "save":
+		if len(returnPerson()) == 0:
+			print("Error: a family tree must be loaded in the current session first")
+		else:
+			saveFamTree(ipt.split()[1])
+			print("Family Tree has been updated!")
 	else: 
 		print("Error: unrecognized keyword \"" + ipt.split()[0] + "\"")
 	
