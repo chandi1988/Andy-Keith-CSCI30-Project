@@ -1,6 +1,6 @@
-from personclass import *
-from relationclass import *
-from testulit import *
+from Person import *
+from Relations import *
+from TreeFunctions import *
 
 while True:
 	ipt = input(">")

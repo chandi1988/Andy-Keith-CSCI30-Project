@@ -1,5 +1,5 @@
-from personclass import *
-from relationclass import *
+from Person import *
+from Relations import *
 
 firsterror = False
 def getError():
@@ -32,7 +32,6 @@ def FamTreeLoad(familyName):
 					global firsterror
 					firsterror = True
 					print("Error: person details are insufficient")
-					
 			elif lineSplit[0] == "child":
 				linkIn(str(line).rstrip('\n'))
 			line = file.readline()
